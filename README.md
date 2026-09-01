@@ -132,8 +132,6 @@ overhead is printed and stored in the results so you can check the correction.
 - **10 pairs is a small corpus.** The direction and rough magnitude are stable
   across all ten and across both tokenizers, but the third decimal place is not
   meaningful. Treat 3.6x and 1.4x as the honest precision.
-- **The pairs are hand-written**, not sampled from production traffic. They were
-  written to be representative across genres, but they are not a random sample.
 - **Hebrew only.** Arabic, Russian and other non-Latin scripts used in Israeli
   products are not covered here, though the same script would measure them.
 - **Tokenizers are not prices.** A cheaper-per-token model with a worse tokenizer

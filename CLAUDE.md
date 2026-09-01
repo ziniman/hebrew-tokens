@@ -69,5 +69,5 @@ if you change the methodology in one, change it in the other and regenerate both
   more on non-English. Do not present OpenAI numbers as Claude numbers anywhere.
 - Results JSON is written with `ensure_ascii=False` / UTF-8 — Hebrew must stay
   readable in the file. Don't let a tool re-encode it to `\uXXXX`.
-- Treat the reported precision as "3.6x and 1.4x" — the corpus is 10 hand-written
-  pairs, so trailing decimals are not meaningful (the README says this explicitly).
+- Treat the reported precision as "3.6x and 1.4x" — the corpus is only 10 pairs,
+  so trailing decimals are not meaningful (the README says this explicitly).
