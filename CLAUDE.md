@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Commits
+
+Do NOT add any Claude / Claude Code attribution to commits or PRs — no
+`Co-Authored-By: Claude ...` trailer, no `Claude-Session:` line, no
+"🤖 Generated with Claude Code" line. Commit messages and PR bodies must contain
+nothing identifying the tooling. (Mentioning "Claude" as the *subject* of the
+work — this repo measures Claude tokenization — is fine.)
+
 ## What this repo is
 
 A small, reproducible measurement of how many more LLM tokens it costs to express
