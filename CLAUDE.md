@@ -15,8 +15,9 @@ work — this repo measures Claude tokenization — is fine.)
 A small, reproducible measurement of how many more LLM tokens it costs to express
 the **same meaning** in Hebrew versus English. It is a data/measurement project,
 not an application — the deliverable is the numbers in `results/` and the argument
-in `README.md`. Keep both in sync: the README quotes specific figures
-(3.574x, 1.42x, the 2.5x improvement) that are computed by the scripts.
+in `README.md`. Keep both in sync: the README quotes specific figures (OpenAI
+3.574x / 1.420x; Claude 4.5 gen 2.539x, Claude 5 gen 1.769x; the gpt-tokenizer
+undercount vs Claude 5) that are computed by the scripts.
 
 ## Commands
 
@@ -72,9 +73,12 @@ if you change the methodology in one, change it in the other and regenerate both
 
 ## Important constraints
 
-- OpenAI tokenizer counts do **not** predict Claude. Anthropic's docs warn that
-  `tiktoken`/`gpt-tokenizer` undercount Claude by ~15–20% on ordinary text and
-  more on non-English. Do not present OpenAI numbers as Claude numbers anywhere.
+- OpenAI tokenizer counts do **not** predict Claude. Measured against Claude 5,
+  `o200k_base` undercounts this corpus by ~33% on English and ~46% on Hebrew.
+  Do not present OpenAI numbers as Claude numbers anywhere.
+- Two Claude tokenizer generations are measurable: 4.5 (Sonnet/Haiku/Opus 4.5,
+  one shared tokenizer) and 5 (Opus 5 = Sonnet 5). Claude 3.x and 4.0/4.1 return
+  404 from `count_tokens`. Within a generation, models are byte-identical.
 - Results JSON is written with `ensure_ascii=False` / UTF-8 — Hebrew must stay
   readable in the file. Don't let a tool re-encode it to `\uXXXX`.
 - Treat the reported precision as "3.6x and 1.4x" — the corpus is only 10 pairs,

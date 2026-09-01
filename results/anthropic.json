@@ -210,6 +210,216 @@
           "ratio": 1.525
         }
       ]
+    },
+    "claude-sonnet-4-5-20250929": {
+      "per_message_overhead_tokens": 7,
+      "totals": {
+        "he_tokens": 1211,
+        "en_tokens": 477,
+        "he_chars": 1757,
+        "en_chars": 2515,
+        "token_ratio_he_over_en": 2.539,
+        "char_ratio_he_over_en": 0.699
+      },
+      "ratio_min": 2.21,
+      "ratio_max": 2.95,
+      "per_pair": [
+        {
+          "id": "product_prose",
+          "genre": "Product / marketing prose",
+          "he_tokens": 130,
+          "en_tokens": 46,
+          "he_chars": 181,
+          "en_chars": 250,
+          "ratio": 2.826
+        },
+        {
+          "id": "support_ticket",
+          "genre": "Customer support message",
+          "he_tokens": 127,
+          "en_tokens": 48,
+          "he_chars": 173,
+          "en_chars": 242,
+          "ratio": 2.646
+        },
+        {
+          "id": "system_prompt",
+          "genre": "LLM system prompt",
+          "he_tokens": 126,
+          "en_tokens": 57,
+          "he_chars": 173,
+          "en_chars": 279,
+          "ratio": 2.211
+        },
+        {
+          "id": "general_prose",
+          "genre": "General / editorial prose",
+          "he_tokens": 112,
+          "en_tokens": 46,
+          "he_chars": 173,
+          "en_chars": 256,
+          "ratio": 2.435
+        },
+        {
+          "id": "mixed_he_tech",
+          "genre": "Hebrew with embedded Latin technical terms",
+          "he_tokens": 101,
+          "en_tokens": 45,
+          "he_chars": 178,
+          "en_chars": 212,
+          "ratio": 2.244
+        },
+        {
+          "id": "legal_hr",
+          "genre": "Legal / HR contract clause",
+          "he_tokens": 121,
+          "en_tokens": 41,
+          "he_chars": 177,
+          "en_chars": 264,
+          "ratio": 2.951
+        },
+        {
+          "id": "ecommerce",
+          "genre": "E-commerce product description",
+          "he_tokens": 121,
+          "en_tokens": 48,
+          "he_chars": 178,
+          "en_chars": 233,
+          "ratio": 2.521
+        },
+        {
+          "id": "news",
+          "genre": "News reporting",
+          "he_tokens": 130,
+          "en_tokens": 50,
+          "he_chars": 182,
+          "en_chars": 275,
+          "ratio": 2.6
+        },
+        {
+          "id": "code_comments",
+          "genre": "Developer documentation / code comments",
+          "he_tokens": 121,
+          "en_tokens": 46,
+          "he_chars": 169,
+          "en_chars": 232,
+          "ratio": 2.63
+        },
+        {
+          "id": "medical",
+          "genre": "Medical / clinical note",
+          "he_tokens": 122,
+          "en_tokens": 50,
+          "he_chars": 173,
+          "en_chars": 272,
+          "ratio": 2.44
+        }
+      ]
+    },
+    "claude-haiku-4-5-20251001": {
+      "per_message_overhead_tokens": 7,
+      "totals": {
+        "he_tokens": 1211,
+        "en_tokens": 477,
+        "he_chars": 1757,
+        "en_chars": 2515,
+        "token_ratio_he_over_en": 2.539,
+        "char_ratio_he_over_en": 0.699
+      },
+      "ratio_min": 2.21,
+      "ratio_max": 2.95,
+      "per_pair": [
+        {
+          "id": "product_prose",
+          "genre": "Product / marketing prose",
+          "he_tokens": 130,
+          "en_tokens": 46,
+          "he_chars": 181,
+          "en_chars": 250,
+          "ratio": 2.826
+        },
+        {
+          "id": "support_ticket",
+          "genre": "Customer support message",
+          "he_tokens": 127,
+          "en_tokens": 48,
+          "he_chars": 173,
+          "en_chars": 242,
+          "ratio": 2.646
+        },
+        {
+          "id": "system_prompt",
+          "genre": "LLM system prompt",
+          "he_tokens": 126,
+          "en_tokens": 57,
+          "he_chars": 173,
+          "en_chars": 279,
+          "ratio": 2.211
+        },
+        {
+          "id": "general_prose",
+          "genre": "General / editorial prose",
+          "he_tokens": 112,
+          "en_tokens": 46,
+          "he_chars": 173,
+          "en_chars": 256,
+          "ratio": 2.435
+        },
+        {
+          "id": "mixed_he_tech",
+          "genre": "Hebrew with embedded Latin technical terms",
+          "he_tokens": 101,
+          "en_tokens": 45,
+          "he_chars": 178,
+          "en_chars": 212,
+          "ratio": 2.244
+        },
+        {
+          "id": "legal_hr",
+          "genre": "Legal / HR contract clause",
+          "he_tokens": 121,
+          "en_tokens": 41,
+          "he_chars": 177,
+          "en_chars": 264,
+          "ratio": 2.951
+        },
+        {
+          "id": "ecommerce",
+          "genre": "E-commerce product description",
+          "he_tokens": 121,
+          "en_tokens": 48,
+          "he_chars": 178,
+          "en_chars": 233,
+          "ratio": 2.521
+        },
+        {
+          "id": "news",
+          "genre": "News reporting",
+          "he_tokens": 130,
+          "en_tokens": 50,
+          "he_chars": 182,
+          "en_chars": 275,
+          "ratio": 2.6
+        },
+        {
+          "id": "code_comments",
+          "genre": "Developer documentation / code comments",
+          "he_tokens": 121,
+          "en_tokens": 46,
+          "he_chars": 169,
+          "en_chars": 232,
+          "ratio": 2.63
+        },
+        {
+          "id": "medical",
+          "genre": "Medical / clinical note",
+          "he_tokens": 122,
+          "en_tokens": 50,
+          "he_chars": 173,
+          "en_chars": 272,
+          "ratio": 2.44
+        }
+      ]
     }
   }
 }
