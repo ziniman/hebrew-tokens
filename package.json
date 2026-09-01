@@ -2,11 +2,11 @@
   "name": "hebrew-tokens",
   "version": "1.0.0",
   "description": "How much more does Hebrew cost than English, in LLM tokens? A reproducible measurement.",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "scripts": {
     "measure": "node src/measure-openai.js"
   },
   "dependencies": {
-    "gpt-tokenizer": "^3.0.1"
+    "gpt-tokenizer": "3.4.0"
   }
 }

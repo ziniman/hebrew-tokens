@@ -75,7 +75,7 @@ than a lucky sample:
 | Tokenizer | Total ratio | Per-pair range |
 |---|---|---|
 | `cl100k_base` | 3.574x | 3.00x - 4.45x |
-| `o200k_base` | 1.420x | 1.22x - 1.61x |
+| `o200k_base` | 1.420x | 1.22x - 1.60x |
 
 ---
 
@@ -84,12 +84,15 @@ than a lucky sample:
 ### OpenAI tokenizers - no API key, no network
 
 ```sh
-npm install
+npm ci
 npm run measure
 ```
 
-`gpt-tokenizer` bundles the encodings offline, so this runs fully locally and is
-deterministic. Output goes to `results/openai.json`.
+`gpt-tokenizer` is pinned to an exact version and bundles the encodings offline,
+so this runs fully locally and is deterministic. Each run is archived to
+`results/openai-<timestamp>.json` (git-ignored); `results/openai.json` is
+refreshed as the canonical latest snapshot and carries no timestamp, so it only
+changes in git when the counts do.
 
 ### Claude - needs an API key
 
@@ -105,7 +108,11 @@ python3 src/measure_anthropic.py
 python3 src/measure_anthropic.py --models claude-opus-5 claude-sonnet-5
 ```
 
-Output goes to `results/anthropic.json`.
+Each run is archived to `results/anthropic-<timestamp>.json` (git-ignored);
+`results/anthropic.json` is refreshed as the canonical latest snapshot. Pass
+`--out PATH` to write a single file to an explicit path instead. If a rate limit
+or connection error interrupts a run, models that already finished are still
+written - re-run to complete the rest.
 
 > **The OpenAI numbers above are not Claude numbers.** Anthropic's own
 > documentation warns that `tiktoken` and `gpt-tokenizer` undercount Claude by
@@ -131,9 +138,12 @@ overhead is printed and stored in the results so you can check the correction.
   products are not covered here, though the same script would measure them.
 - **Tokenizers are not prices.** A cheaper-per-token model with a worse tokenizer
   can still cost more. Compare total cost, not ratios alone.
+- **Input tokens only.** Output tokens are billed separately, typically at 3-5x
+  the input rate, and Hebrew output carries the same tokenization penalty. A
+  product that reads *and* writes Hebrew feels this on both sides of the bill.
 
 Contributions of real-world pairs, or of results from other models, are welcome.
 
 ## License
 
-MIT
+Apache License 2.0

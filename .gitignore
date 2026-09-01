@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .venv/
 .env
+
+# Per-run result archives; only the canonical results/*.json are tracked
+results/openai-*.json
+results/anthropic-*.json

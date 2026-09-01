@@ -3,7 +3,14 @@
  * Measures Hebrew vs English tokenization cost on OpenAI's tokenizers.
  * No API key and no network needed - gpt-tokenizer bundles the encodings offline.
  *
- * Usage:  npm install && npm run measure
+ * Usage:  npm ci && npm run measure
+ *
+ * Scope: this measures INPUT tokens only - the cost of sending the text to the
+ * model. Output/completion tokens are billed separately and at a markedly higher
+ * rate (roughly 3-5x the input rate across current OpenAI and Anthropic models),
+ * and Hebrew output is tokenized with the same penalty measured here. So for a
+ * Hebrew product that both reads and writes Hebrew, the effect on the total bill
+ * compounds beyond the input ratio reported below.
  */
 const fs = require('fs');
 const path = require('path');
@@ -19,7 +26,7 @@ const corpus = JSON.parse(
 );
 const pairs = corpus.pairs;
 
-const results = { generated_at: new Date().toISOString(), encodings: {} };
+const results = { encodings: {} };
 
 for (const [label, mod] of Object.entries(ENCODINGS)) {
   const enc = require(`gpt-tokenizer/encoding/${mod}`);
@@ -66,7 +73,7 @@ console.log(`Characters: ${older.totals.he_chars} Hebrew vs ${older.totals.en_ch
 for (const e of enc) {
   console.log(`${e.label}`);
   console.log(`  Hebrew ${e.totals.he_tokens} tokens vs English ${e.totals.en_tokens} tokens`);
-  console.log(`  Hebrew costs ${e.totals.token_ratio_he_over_en}x English  (per-pair range ${e.ratio_min} - ${e.ratio_max})\n`);
+  console.log(`  Hebrew costs ${e.totals.token_ratio_he_over_en}x English  (per-pair range ${e.ratio_min.toFixed(2)} - ${e.ratio_max.toFixed(2)})\n`);
 }
 
 const improvement = older.totals.token_ratio_he_over_en / newer.totals.token_ratio_he_over_en;
@@ -75,9 +82,21 @@ console.log(`  ${older.totals.token_ratio_he_over_en} / ${newer.totals.token_rat
 console.log('Note: these are OpenAI tokenizers. They do NOT predict Claude or Gemini.');
 console.log('      For Claude, run  python3 src/measure_anthropic.py  with an API key.\n');
 
-fs.mkdirSync(path.join(__dirname, '..', 'results'), { recursive: true });
+// Archive each run to its own timestamped file so past runs are never clobbered;
+// refresh results/openai.json as the canonical latest snapshot. The canonical
+// copy carries no timestamp field, so it stays byte-stable in git unless the
+// token counts themselves change.
+const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
+const resultsDir = path.join(__dirname, '..', 'results');
+fs.mkdirSync(resultsDir, { recursive: true });
+
 fs.writeFileSync(
-  path.join(__dirname, '..', 'results', 'openai.json'),
+  path.join(resultsDir, `openai-${stamp}.json`),
+  JSON.stringify({ generated_at: new Date().toISOString(), ...results }, null, 2) + '\n'
+);
+fs.writeFileSync(
+  path.join(resultsDir, 'openai.json'),
   JSON.stringify(results, null, 2) + '\n'
 );
-console.log('Wrote results/openai.json');
+console.log(`Wrote results/openai-${stamp}.json`);
+console.log('Updated results/openai.json (canonical latest)');
