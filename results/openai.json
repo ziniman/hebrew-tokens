@@ -1,0 +1,219 @@
+{
+  "generated_at": "2026-09-01T13:28:35.365Z",
+  "encodings": {
+    "cl100k_base": {
+      "label": "GPT-3.5 / GPT-4  (cl100k_base)",
+      "totals": {
+        "he_tokens": 1651,
+        "en_tokens": 462,
+        "he_chars": 1757,
+        "en_chars": 2515,
+        "token_ratio_he_over_en": 3.574,
+        "char_ratio_he_over_en": 0.699,
+        "he_tokens_per_char": 0.9397,
+        "en_tokens_per_char": 0.1837
+      },
+      "per_pair": [
+        {
+          "id": "product_prose",
+          "genre": "Product / marketing prose",
+          "he_tokens": 175,
+          "en_tokens": 46,
+          "he_chars": 181,
+          "en_chars": 250,
+          "ratio": 3.804
+        },
+        {
+          "id": "support_ticket",
+          "genre": "Customer support message",
+          "he_tokens": 162,
+          "en_tokens": 48,
+          "he_chars": 173,
+          "en_chars": 242,
+          "ratio": 3.375
+        },
+        {
+          "id": "system_prompt",
+          "genre": "LLM system prompt",
+          "he_tokens": 167,
+          "en_tokens": 54,
+          "he_chars": 173,
+          "en_chars": 279,
+          "ratio": 3.093
+        },
+        {
+          "id": "general_prose",
+          "genre": "General / editorial prose",
+          "he_tokens": 166,
+          "en_tokens": 45,
+          "he_chars": 173,
+          "en_chars": 256,
+          "ratio": 3.689
+        },
+        {
+          "id": "mixed_he_tech",
+          "genre": "Hebrew with embedded Latin technical terms",
+          "he_tokens": 132,
+          "en_tokens": 44,
+          "he_chars": 178,
+          "en_chars": 212,
+          "ratio": 3
+        },
+        {
+          "id": "legal_hr",
+          "genre": "Legal / HR contract clause",
+          "he_tokens": 169,
+          "en_tokens": 38,
+          "he_chars": 177,
+          "en_chars": 264,
+          "ratio": 4.447
+        },
+        {
+          "id": "ecommerce",
+          "genre": "E-commerce product description",
+          "he_tokens": 176,
+          "en_tokens": 46,
+          "he_chars": 178,
+          "en_chars": 233,
+          "ratio": 3.826
+        },
+        {
+          "id": "news",
+          "genre": "News reporting",
+          "he_tokens": 171,
+          "en_tokens": 48,
+          "he_chars": 182,
+          "en_chars": 275,
+          "ratio": 3.563
+        },
+        {
+          "id": "code_comments",
+          "genre": "Developer documentation / code comments",
+          "he_tokens": 166,
+          "en_tokens": 46,
+          "he_chars": 169,
+          "en_chars": 232,
+          "ratio": 3.609
+        },
+        {
+          "id": "medical",
+          "genre": "Medical / clinical note",
+          "he_tokens": 167,
+          "en_tokens": 47,
+          "he_chars": 173,
+          "en_chars": 272,
+          "ratio": 3.553
+        }
+      ],
+      "ratio_min": 3,
+      "ratio_max": 4.45
+    },
+    "o200k_base": {
+      "label": "GPT-4o / GPT-5   (o200k_base)",
+      "totals": {
+        "he_tokens": 656,
+        "en_tokens": 462,
+        "he_chars": 1757,
+        "en_chars": 2515,
+        "token_ratio_he_over_en": 1.42,
+        "char_ratio_he_over_en": 0.699,
+        "he_tokens_per_char": 0.3734,
+        "en_tokens_per_char": 0.1837
+      },
+      "per_pair": [
+        {
+          "id": "product_prose",
+          "genre": "Product / marketing prose",
+          "he_tokens": 67,
+          "en_tokens": 46,
+          "he_chars": 181,
+          "en_chars": 250,
+          "ratio": 1.457
+        },
+        {
+          "id": "support_ticket",
+          "genre": "Customer support message",
+          "he_tokens": 67,
+          "en_tokens": 48,
+          "he_chars": 173,
+          "en_chars": 242,
+          "ratio": 1.396
+        },
+        {
+          "id": "system_prompt",
+          "genre": "LLM system prompt",
+          "he_tokens": 66,
+          "en_tokens": 54,
+          "he_chars": 173,
+          "en_chars": 279,
+          "ratio": 1.222
+        },
+        {
+          "id": "general_prose",
+          "genre": "General / editorial prose",
+          "he_tokens": 61,
+          "en_tokens": 45,
+          "he_chars": 173,
+          "en_chars": 256,
+          "ratio": 1.356
+        },
+        {
+          "id": "mixed_he_tech",
+          "genre": "Hebrew with embedded Latin technical terms",
+          "he_tokens": 58,
+          "en_tokens": 44,
+          "he_chars": 178,
+          "en_chars": 212,
+          "ratio": 1.318
+        },
+        {
+          "id": "legal_hr",
+          "genre": "Legal / HR contract clause",
+          "he_tokens": 61,
+          "en_tokens": 38,
+          "he_chars": 177,
+          "en_chars": 264,
+          "ratio": 1.605
+        },
+        {
+          "id": "ecommerce",
+          "genre": "E-commerce product description",
+          "he_tokens": 66,
+          "en_tokens": 46,
+          "he_chars": 178,
+          "en_chars": 233,
+          "ratio": 1.435
+        },
+        {
+          "id": "news",
+          "genre": "News reporting",
+          "he_tokens": 71,
+          "en_tokens": 48,
+          "he_chars": 182,
+          "en_chars": 275,
+          "ratio": 1.479
+        },
+        {
+          "id": "code_comments",
+          "genre": "Developer documentation / code comments",
+          "he_tokens": 66,
+          "en_tokens": 46,
+          "he_chars": 169,
+          "en_chars": 232,
+          "ratio": 1.435
+        },
+        {
+          "id": "medical",
+          "genre": "Medical / clinical note",
+          "he_tokens": 73,
+          "en_tokens": 47,
+          "he_chars": 173,
+          "en_chars": 272,
+          "ratio": 1.553
+        }
+      ],
+      "ratio_min": 1.22,
+      "ratio_max": 1.6
+    }
+  }
+}
