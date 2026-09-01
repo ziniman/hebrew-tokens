@@ -98,13 +98,16 @@ changes in git when the counts do.
 
 Anthropic publishes **no downloadable tokenizer**, so Claude cannot be measured
 offline. It has to be asked. The `count_tokens` endpoint returns exact,
-model-specific counts and is **free** - it does not run inference and is not
-billed per token.
+model-specific counts and does **not** consume tokens or run inference - so this
+script costs nothing to run. It does, however, go through the standard API, which
+rejects every request (`count_tokens` included) when the account's credit balance
+is zero. The account needs a small positive balance; the script will not draw it
+down.
 
 ```sh
-pip install -r requirements.txt
-export ANTHROPIC_API_KEY=sk-ant-...
-python3 src/measure_anthropic.py
+pip install -r requirements.txt          # needs anthropic >= 0.41.0
+export ANTHROPIC_API_KEY=sk-ant-...       # from console.anthropic.com, on a credited account
+python3 src/measure_anthropic.py                                   # default: claude-opus-5
 python3 src/measure_anthropic.py --models claude-opus-5 claude-sonnet-5
 ```
 
