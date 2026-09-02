@@ -76,9 +76,11 @@ if you change the methodology in one, change it in the other and regenerate both
 - OpenAI tokenizer counts do **not** predict Claude. Measured against Claude 5,
   `o200k_base` undercounts this corpus by ~33% on English and ~46% on Hebrew.
   Do not present OpenAI numbers as Claude numbers anywhere.
-- Two Claude tokenizer generations are measurable: 4.5 (Sonnet/Haiku/Opus 4.5,
-  one shared tokenizer) and 5 (Opus 5 = Sonnet 5). Claude 3.x and 4.0/4.1 return
-  404 from `count_tokens`. Within a generation, models are byte-identical.
+- Two Claude tokenizer generations are measurable: 4.5/4.6 (Sonnet 4.5, Sonnet
+  4.6, Haiku 4.5, Opus 4.5 — one shared tokenizer, byte-identical on this corpus)
+  and 5 (Opus 5 = Sonnet 5). Sonnet 4.6 did not introduce a new tokenizer. Claude
+  3.x and 4.0/4.1 return 404 from `count_tokens`. Within a generation, models are
+  byte-identical.
 - Results JSON is written with `ensure_ascii=False` / UTF-8 — Hebrew must stay
   readable in the file. Don't let a tool re-encode it to `\uXXXX`.
 - Treat the reported precision as "3.6x and 1.4x" — the corpus is only 10 pairs,

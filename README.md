@@ -9,7 +9,7 @@ Short answer - saying the same thing in Hebrew costs, in tokens:
 |---|---|---|
 | OpenAI `cl100k_base` | GPT-3.5, GPT-4 | **3.57x** English |
 | OpenAI `o200k_base` | GPT-4o, GPT-4.1, GPT-5, o-series | **1.42x** English |
-| Claude 4.5 generation | Sonnet 4.5, Haiku 4.5, Opus 4.5 | **2.54x** English |
+| Claude 4.5 / 4.6 generation | Sonnet 4.5, Sonnet 4.6, Haiku 4.5, Opus 4.5 | **2.54x** English |
 | Claude 5 generation | Opus 5, Sonnet 5 | **1.77x** English |
 
 Two things to take from this:
@@ -23,6 +23,9 @@ Two things to take from this:
   (477 -> 688). Contrast OpenAI's `o200k_base`, which cut the absolute Hebrew
   count by 60%. A Hebrew product pays the same absolute Hebrew token bill on
   Claude 5 as on Claude 4.5.
+- **Sonnet 4.6 did not bring a new tokenizer.** Its counts are byte-identical to
+  Sonnet 4.5, Haiku 4.5 and Opus 4.5 on every pair (1,211 Hebrew / 477 English).
+  The tokenizer changed at 4.5 -> 5, not at 4.5 -> 4.6.
 
 ---
 
@@ -83,13 +86,14 @@ than a lucky sample:
 |---|---|---|
 | OpenAI `cl100k_base` | 3.574x | 3.00x - 4.45x |
 | OpenAI `o200k_base` | 1.420x | 1.22x - 1.60x |
-| Claude 4.5 generation | 2.539x | 2.21x - 2.95x |
+| Claude 4.5 / 4.6 generation | 2.539x | 2.21x - 2.95x |
 | Claude 5 generation | 1.769x | 1.52x - 2.13x |
 
 **Claude changed its tokenizer between the 4.5 and 5 generations, but not in
-Hebrew's favour.** Sonnet 4.5, Haiku 4.5 and Opus 4.5 share one tokenizer; Opus 5
-and Sonnet 5 share a different one. Going from 4.5 to 5, the corpus's Hebrew count
-went 1,211 -> 1,217 tokens (essentially unchanged) while English went 477 -> 688.
+Hebrew's favour.** Sonnet 4.5, Sonnet 4.6, Haiku 4.5 and Opus 4.5 share one
+tokenizer (byte-identical on this corpus); Opus 5 and Sonnet 5 share a different
+one. Going from 4.5 to 5, the corpus's Hebrew count went 1,211 -> 1,217 tokens
+(essentially unchanged) while English went 477 -> 688.
 Word-level: `"developers"` is 1 token on Claude 4.5 and 2 on Claude 5, while
 `"מפתחים"` is 5 on both. The 5 tokenizer compresses ordinary English prose *worse*
 than 4.5 and leaves Hebrew where it was.
@@ -125,7 +129,7 @@ down.
 pip install -r requirements.txt          # needs anthropic >= 0.41.0
 export ANTHROPIC_API_KEY=sk-ant-...       # from console.anthropic.com, on a credited account
 python3 src/measure_anthropic.py                                       # default: claude-opus-5
-python3 src/measure_anthropic.py --models claude-opus-5 claude-sonnet-4-5   # compare tokenizer generations
+python3 src/measure_anthropic.py --models claude-opus-5 claude-sonnet-4-6 claude-sonnet-4-5   # compare tokenizer generations
 ```
 
 Each run is archived to `results/anthropic-<timestamp>.json` (git-ignored);
@@ -154,8 +158,10 @@ overhead is printed and stored in the results so you can check the correction.
   across all ten pairs and all four tokenizers, but the third decimal place is
   not meaningful. Treat 3.6x / 1.4x (OpenAI) and 2.5x / 1.8x (Claude) as the
   honest precision.
-- **Only two Claude generations could be measured.** Claude 3.x and 4.0/4.1 now
-  return 404 from `count_tokens`, so the comparison is 4.5 vs 5 only.
+- **Only two Claude tokenizer generations are in play.** Claude 3.x and 4.0/4.1
+  now return 404 from `count_tokens`. Sonnet 4.5, Sonnet 4.6, Haiku 4.5 and Opus
+  4.5 all share one tokenizer; Opus 5 and Sonnet 5 share the next. So the
+  comparison is 4.5/4.6 vs 5.
 - **Hebrew only.** Arabic, Russian and other non-Latin scripts used in Israeli
   products are not covered here, though the same script would measure them.
 - **Tokenizers are not prices.** A cheaper-per-token model with a worse tokenizer
